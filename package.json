@@ -1,0 +1,8 @@
+{
+  "name": "shipment-tracker",
+  "version": "1.0.0",
+  "description": "Mini cloud project: Shipment Tracking API (Docker + AWS + SLA/TTR)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "license": "MIT"
+}

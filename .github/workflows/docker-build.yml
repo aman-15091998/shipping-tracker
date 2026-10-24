@@ -1,0 +1,19 @@
+name: Docker build and smoke test
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t shipment-tracker:ci .
+      - name: Run container and check health
+        run: |
+          docker run -d --name tracker -p 3000:3000 shipment-tracker:ci
+          sleep 3
+          curl -f http://localhost:3000/health
+          curl -f http://localhost:3000/track/SHP1001
